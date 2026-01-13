@@ -1,3 +1,5 @@
 USE project;
+SELECT  * from project;
 
-# Remember to start MySQL server
+SELECT MAX(salary), MIN(salary) FROM person;
+SELECT COUNT(*) FROM project;
