@@ -1,0 +1,2 @@
+# Dependencies, which can be installed with 'npm install' at the root of the express dir
+node_modules/
