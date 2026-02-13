@@ -20,3 +20,16 @@ WHERE lastName LIKE "Morrison" GROUP BY lastName;
 SELECT pname, lastname, work_hour FROM person
 INNER JOIN hour ON person.id_person=hour.id_person
 RIGHT JOIN project ON hour.id_project=project.id_project;
+
+# Every person working in project 'Bookkeeping' and their working hours in the project
+SELECT firstname, lastname, work_hour AS hours
+FROM person 
+JOIN hour ON person.id_person=hour.id_person
+JOIN project ON hour.id_project=project.id_project
+WHERE pname='Bookkeeping';
+
+# Persons with a number of project associations
+SELECT person.id_person, firstname, lastname, COUNT(id_project) AS 'Project associations'
+FROM person
+JOIN hour ON person.id_person=hour.id_person
+GROUP BY person.id_person;

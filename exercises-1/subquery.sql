@@ -15,6 +15,18 @@ SELECT pname FROM project WHERE id_project IN
 (SELECT id_person FROM person WHERE lastname='Morrison'
 ));
 
+# ID, name and salary of the person with most work hours in 'Selling' which also lives in 'Helsinki'
+SELECT person.id_person, CONCAT(firstname, ' ', lastname) AS name, salary
+FROM person
+JOIN hour ON person.id_person=hour.id_person
+JOIN project ON hour.id_project=project.id_project
+WHERE pname='Selling' AND city='Helsinki' AND work_hour=(
+# I first thought that the subquery needs the
+# same specifications as the original query.
+# But I think it uses the ones from the og.
+SELECT MAX(work_hour) FROM hour
+);
+
 
 USE library;
 
