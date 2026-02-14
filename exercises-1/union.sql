@@ -72,3 +72,17 @@ SELECT id_person, firstname, lastname, 'Salary over 40' AS Label
 FROM person
 WHERE salary > 40
 ORDER BY firstname, lastname;
+
+# Count of persons, sum of all hours and average hours per person.
+# Listed horizontally with headers "Context", "Value"
+# Notice that this has 2 'commands'
+SET @personel_amount = (SELECT COUNT(id_person) FROM person);
+SELECT 'Personel amount' AS Context, FORMAT(@personel_amount, 0) AS Value
+FROM person
+UNION
+SELECT 'Work hours combined', SUM(work_hour) AS Value
+FROM hour
+UNION
+SELECT 'Avg hours per person', FORMAT(SUM(work_hour) / @personel_amount, 2)
+FROM person
+JOIN hour ON person.id_person=hour.id_person;
