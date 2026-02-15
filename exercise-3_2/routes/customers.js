@@ -17,6 +17,21 @@ router.get('/', function(request, response)
     });
 });
 
+router.get('/:username', function(request, response)
+{
+    customers.getOne(request.params.username, function(err, result)
+    {
+        if (err)
+        {
+            response.send(err);
+        }
+        else
+        {
+            response.json(result[0]);
+        }
+    });
+});
+
 router.post('/', function (request, response)
 {
     customers.add(request.body, function (err, result)
