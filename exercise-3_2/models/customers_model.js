@@ -5,6 +5,11 @@ const saltrounds=12;
 
 const customers=
 {
+    getAll(callback)
+    {
+        return db.query("SELECT * FROM customers", callback);
+    },
+
     add(newC, callback)
     {
         bcrypt.hash(newC.password, saltrounds, function(err, hashedPassword)
