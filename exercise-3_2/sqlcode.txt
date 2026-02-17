@@ -22,3 +22,5 @@ CREATE TABLE customers(
 );
 
 ALTER TABLE customers ADD COLUMN role VARCHAR(15) DEFAULT 'user';
+
+UPDATE customers SET role='admin' WHERE username='hCheff';

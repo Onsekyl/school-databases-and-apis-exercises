@@ -1,7 +1,7 @@
 const express=require('express');
-const router=express.Router();
 const customers=require('../models/customers_model');
 const bcrypt=require('bcryptjs');
+const router=express.Router();
 const jwt=require('jsonwebtoken');
 
 router.post('/', function(request, response)
@@ -31,7 +31,7 @@ router.post('/', function(request, response)
                         {
                             if (compareResult)
                             {
-                                const token=generateToken(username, result[0]);
+                                const token = generateToken(username, result[0].role);
                                 response.json(token);
                             }
                             else
