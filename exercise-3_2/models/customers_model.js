@@ -26,12 +26,13 @@ const customers=
             }
             else
             {
-                return db.query("INSERT INTO customers VALUES(?, ?, ?, ?)",
+                return db.query("INSERT INTO customers VALUES(?, ?, ?, ?, ?)",
                     [
                         newC.username,
                         newC.firstname,
                         newC.lastname,
-                        hashedPassword
+                        hashedPassword,
+                        newC.role
                     ], callback);
             }
         });
