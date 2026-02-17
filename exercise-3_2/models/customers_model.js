@@ -72,6 +72,12 @@ const customers=
     delete(username, callback)
     {
         return db.query("DELETE FROM customers WHERE username=?", [username], callback);
+    },
+
+    checkLogin(username, callback)
+    {
+        return db.query("SELECT password, role FROM customers WHERE username=?",
+            [username], callback);
     }
 }
 

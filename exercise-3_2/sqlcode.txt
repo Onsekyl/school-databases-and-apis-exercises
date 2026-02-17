@@ -21,3 +21,4 @@ CREATE TABLE customers(
     password VARCHAR(100)
 );
 
+ALTER TABLE customers ADD COLUMN role VARCHAR(15) DEFAULT 'user';

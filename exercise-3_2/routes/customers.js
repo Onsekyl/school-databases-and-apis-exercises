@@ -4,6 +4,11 @@ const customers = require('../models/customers_model');
 
 router.get('/', function(request, response)
 {
+    if(request.user.role != 'admin')
+    {
+        return response.status(403).json("No permission to this resource");
+    }
+
     customers.getAllCustomers(function(err, result)
     {
         if (err)
@@ -19,6 +24,13 @@ router.get('/', function(request, response)
 
 router.get('/:username', function(request, response)
 {
+    console.log(request.user);
+    
+    if (request.user.username != request.params.username)
+    {
+        return response.status(403).json("No permission to this resource");
+    }
+
     customers.getOneCustomer(request.params.username, function(err, result)
     {
         if (err)
