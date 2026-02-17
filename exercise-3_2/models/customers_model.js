@@ -48,8 +48,8 @@ const customers=
             }
             else
             {
-                return db.query("UPDATE customers SET firstname=?, lastname=?, password=? WHERE username=?",
-                    [newC.firstname, newC.lastname, hashedPassword, username], callback);
+                return db.query("UPDATE customers SET firstname=?, lastname=?, password=?, role=? WHERE username=?",
+                    [newC.firstname, newC.lastname, hashedPassword, newC.role, username], callback);
             }
         });
     },
