@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const PORT=3000;
 const productsRouter=require('./routes/products');
+const customersRouter=require('./routes/customers');
 
 app.use(express.json());
 
@@ -11,6 +12,7 @@ app.get('/', function(reguest, response)
 });
 
 app.use('/products', productsRouter);
+app.use('/customers', customersRouter);
 
 app.listen(PORT, function()
 {
