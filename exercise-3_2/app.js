@@ -4,6 +4,7 @@ const PORT=3000;
 const productsRouter=require('./routes/products');
 const customersRouter=require('./routes/customers');
 const loginRouter=require('./routes/login');
+const ordersRouter=require('./routes/orders_handler');
 const dotenv=require('dotenv');
 const jwt=require('jsonwebtoken');
 
@@ -19,10 +20,11 @@ app.use('/login', loginRouter);
 app.use(authenticateToken);
 app.use('/products', productsRouter);
 app.use('/customers', customersRouter);
+app.use('/orders', ordersRouter);
 
-app.listen(PORT, function()
+app.listen(process.env.PORT, function()
 {
-    console.log("Server listening to port: " + PORT);
+    console.log("Server listening to port: " + process.env.PORT);
 });
 
 function authenticateToken(request, response, next)
